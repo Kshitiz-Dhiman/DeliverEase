@@ -124,6 +124,10 @@ app.get("/api/userexist", isloggedin, async (req, res) => {
         res.send({ status: "error" });
     }
 })
+app.get("/api/allrequests", isloggedin, async (req, res) => {
+    let requests = await requestModel.find();
+    res.json(requests);
+})
 function isloggedin(req, res, next) {
     if (req.cookies.token === "") {
         res.redirect("/login");

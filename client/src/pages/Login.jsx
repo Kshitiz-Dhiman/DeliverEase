@@ -41,7 +41,7 @@ export default function Component() {
     return (
         <div className="flex justify-center items-center h-screen">
             <Card className="w-full max-w-md p-6 sm:p-8">
-                <h4 className="text-slate-500 hover:underline"><NavLink to="/home">Back to home</NavLink></h4>
+                <h4 className="text-slate-500 hover:underline"><NavLink to="/">Back to home</NavLink></h4>
                 <CardHeader>
                     <CardTitle className="text-2xl font-bold">Login</CardTitle>
                     <CardDescription>Welcome back User</CardDescription>

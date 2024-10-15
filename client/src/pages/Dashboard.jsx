@@ -18,7 +18,6 @@ function DialogDemo() {
         description: '',
         price: ''
     });
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -26,7 +25,6 @@ function DialogDemo() {
             [name]: value
         });
     };
-
     const postRequest = async (e) => {
         e.preventDefault();
         const response = await fetch('http://localhost:3000/api/requests', {
@@ -44,7 +42,6 @@ function DialogDemo() {
             alert('Failed to submit request');
         }
     }
-
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -106,6 +103,8 @@ function DialogDemo() {
 const Dashboard = () => {
     const [userData, setUserData] = useState(null);
     const [requests, setRequests] = useState([]);
+    const [allrequests, setAllRequests] = useState([]);
+
     useEffect(() => {
         async function fetchUserData() {
             try {
@@ -133,8 +132,17 @@ const Dashboard = () => {
             const data = await response.json();
             setRequests(data);
         }
+        async function allRequests() {
+            const response = await fetch("http://localhost:3000/api/allrequests", {
+                method: 'GET',
+                credentials: 'include'
+            })
+            const data = await response.json();
+            setAllRequests(data);
+        }
         fetchUserData();
         getRequest();
+        allRequests();
     }, []);
 
     if (!userData) {
@@ -157,14 +165,20 @@ const Dashboard = () => {
                 <h1 className='font-bold text-3xl md:text-5xl my-5'>{userData.type === "dayScholar" ? "Active" : "Your"} Orders</h1>
                 {userData.type === "dayScholar" ? (
                     <div className="flex flex-wrap gap-5">
-                        <div className="min-w-[200px] md:min-w-[300px] min-h-[200px] p-6 bg-[#f2faff] border border-gray-100 rounded-lg shadow">
-                            <h5 className="mb-2 text-xl md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Dairy Product</h5>
-                            <p className="mb-3 font-normal text-gray-600 dark:text-gray-400">Bring it fast</p>
-                            <h1 className='my-5 font-bold text-xl md:text-2xl'>₹ 90 </h1>
-                            <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-[#304b6b] rounded-[1] hover:bg-[#304b6a] focus:ring-4 focus:outline-none focus:ring-blue-300">
-                                Accept
-                            </a>
-                        </div>
+                        {allrequests.slice().reverse().map((request) => {
+                            return (
+                                <div key={request._id} className="flex flex-wrap gap-5">
+                                    <div className="min-w-[200px] md:min-w-[300px] min-h-[200px] p-6 bg-[#f2faff] border border-gray-100 rounded-lg shadow">
+                                        <h5 className="mb-2 text-xl md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{request.title}</h5>
+                                        <p className="mb-3 font-normal text-gray-600 dark:text-gray-400">{request.description}</p>
+                                        <h1 className='my-5 font-bold text-xl md:text-2xl'>₹ {request.price} </h1>
+                                        <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-500 rounded-[1] hover:bg-[#304b6a] focus:ring-4 focus:outline-none focus:ring-blue-300">
+                                            Pending
+                                        </a>
+                                    </div>
+                                </div>
+                            )
+                        })}
                     </div>
                 ) : (
                     <>
@@ -198,3 +212,14 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+{/* <div className="min-w-[200px] md:min-w-[300px] min-h-[200px] p-6 bg-[#f2faff] border border-gray-100 rounded-lg shadow">
+<div className='mb-2'>
+    <h5 className="text-xl md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Dairy Product</h5>
+    <span>-user</span>
+</div>
+<p className="mb-3 font-normal text-gray-600 dark:text-gray-400">Bring it fast</p>
+<h1 className='my-5 font-bold text-xl md:text-2xl'>₹ 90 </h1>
+<a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-[#304b6b] rounded-[1] hover:bg-[#304b6a] focus:ring-4 focus:outline-none focus:ring-blue-300">
+    Accept
+</a>
+</div> */}
