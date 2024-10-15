@@ -11,6 +11,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from '@/components/ui/textarea';
+import { data } from 'autoprefixer';
 
 function DialogDemo() {
     const [formData, setFormData] = useState({
@@ -93,7 +94,7 @@ function DialogDemo() {
                             />
                         </div>
                     </div>
-                    <Button type="submit">Submit</Button>
+                    <Button type="submit" >Submit</Button>
                 </form>
             </DialogContent>
         </Dialog>
@@ -104,7 +105,7 @@ function DialogDemo() {
 
 const Dashboard = () => {
     const [userData, setUserData] = useState(null);
-
+    const [requests, setRequests] = useState([]);
     useEffect(() => {
         async function fetchUserData() {
             try {
@@ -123,11 +124,18 @@ const Dashboard = () => {
                 console.error("There was an error fetching the user data:", error);
             }
         }
-        // Do it
         async function getRequest() {
-            
+            const response = await fetch("http://localhost:3000/api/requests", {
+                method: 'GET',
+                credentials: 'include'
+            })
+            const data = await response.json();
+            console.log("data : ", data);
+            setRequests(data);
+            console.log("requests : ", requests);
         }
         fetchUserData();
+        getRequest();
     }, []);
 
     if (!userData) {
@@ -165,14 +173,22 @@ const Dashboard = () => {
                             <DialogDemo />
                         </div>
                         <div className="flex flex-wrap gap-5">
-                            <div className="min-w-[200px] md:min-w-[300px] min-h-[200px] p-6 bg-[#f2faff] border border-gray-100 rounded-lg shadow">
-                                <h5 className="mb-2 text-xl md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Dairy Product</h5>
-                                <p className="mb-3 font-normal text-gray-600 dark:text-gray-400">Bring it fast</p>
-                                <h1 className='my-5 font-bold text-xl md:text-2xl'>₹ 90 </h1>
-                                <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-[#747677] rounded-[1] hover:bg-[#304b6a] focus:ring-4 focus:outline-none focus:ring-blue-300">
-                                    Pending
-                                </a>
-                            </div>
+                            {
+                                requests.map((request, key) => {
+                                    return (
+                                        <div key={request._id} className="flex flex-wrap gap-5">
+                                            <div className="min-w-[200px] md:min-w-[300px] min-h-[200px] p-6 bg-[#f2faff] border border-gray-100 rounded-lg shadow">
+                                                <h5 className="mb-2 text-xl md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{request.title}</h5>
+                                                <p className="mb-3 font-normal text-gray-600 dark:text-gray-400">{request.description}</p>
+                                                <h1 className='my-5 font-bold text-xl md:text-2xl'>₹ {request.price} </h1>
+                                                <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-500 rounded-[1] hover:bg-[#304b6a] focus:ring-4 focus:outline-none focus:ring-blue-300">
+                                                    Pending
+                                                </a>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
                     </>
 

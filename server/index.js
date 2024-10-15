@@ -99,7 +99,11 @@ app.get("/api/user", isloggedin, async (req, res) => {
         console.error(error);
     }
 })
-
+app.get("/api/requests", isloggedin, async (req, res) => {
+    let user = await userModel.findById(req.user.userId);
+    let requests = await requestModel.find({ user: user._id });
+    res.json(requests);
+})
 app.post("/api/requests", isloggedin, async (req, res) => {
     let user = await userModel.findById(req.user.userId);
     let { title, description, price } = req.body;
