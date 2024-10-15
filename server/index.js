@@ -42,8 +42,7 @@ app.post("/api/register", async (req, res) => {
                     });
                     const token = jwt.sign({ email: email, userId: user._id }, "verysecretkey");
                     res.cookie("token", token, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
-                    console.log("Token created:", token);
-                    res.status(201).send("User created successfully");
+                    res.send({ status: "ok" });
                 } catch (err) {
                     console.error("Error creating user:", err);
                     res.status(500).send("Error creating user");
@@ -118,7 +117,13 @@ app.post("/api/requests", isloggedin, async (req, res) => {
     await user.save();
     res.send("Request created successfully");
 })
-
+app.get("/api/userexist", isloggedin, async (req, res) => {
+    if (req.user.userId) {
+        res.send({ status: "ok" });
+    } else {
+        res.send({ status: "error" });
+    }
+})
 function isloggedin(req, res, next) {
     if (req.cookies.token === "") {
         res.redirect("/login");

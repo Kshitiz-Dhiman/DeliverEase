@@ -36,7 +36,6 @@ export default function Component() {
 
             const data = await response.json();
             if (data.status === "ok") {
-                // localStorage.setItem("token", data.user);
                 alert("Registration successful!");
                 window.location.href = "/dashboard";
             }

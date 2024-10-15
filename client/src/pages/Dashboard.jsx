@@ -11,7 +11,6 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from '@/components/ui/textarea';
-import { data } from 'autoprefixer';
 
 function DialogDemo() {
     const [formData, setFormData] = useState({
@@ -40,6 +39,7 @@ function DialogDemo() {
         });
         if (response.ok) {
             alert('Request submitted successfully');
+            location.reload();
         } else {
             alert('Failed to submit request');
         }
@@ -123,6 +123,7 @@ const Dashboard = () => {
             } catch (error) {
                 console.error("There was an error fetching the user data:", error);
             }
+
         }
         async function getRequest() {
             const response = await fetch("http://localhost:3000/api/requests", {
@@ -130,9 +131,7 @@ const Dashboard = () => {
                 credentials: 'include'
             })
             const data = await response.json();
-            console.log("data : ", data);
             setRequests(data);
-            console.log("requests : ", requests);
         }
         fetchUserData();
         getRequest();
@@ -174,7 +173,7 @@ const Dashboard = () => {
                         </div>
                         <div className="flex flex-wrap gap-5">
                             {
-                                requests.map((request, key) => {
+                                requests.slice().reverse().map((request) => {
                                     return (
                                         <div key={request._id} className="flex flex-wrap gap-5">
                                             <div className="min-w-[200px] md:min-w-[300px] min-h-[200px] p-6 bg-[#f2faff] border border-gray-100 rounded-lg shadow">
