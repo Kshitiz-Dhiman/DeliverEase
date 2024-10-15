@@ -37,8 +37,8 @@ const Navbar = () => {
             <NavLink to='/'><div className='overflow-hidden'><h1 className='nav1 text-3xl text-white font-bold leading-8 tracking-tight'>Deliver <br /> Ease</h1></div></NavLink>
             <ul className='flex gap-10 text-[17px]'>
                 {/* <li>Product</li>
-                <li>Features</li> */}
-                {/* <li>About</li>
+                <li>Features</li>
+                <li>About</li>
                 <li>Pricing</li>
                 <li>Contact</li> */}
             </ul>

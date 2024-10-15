@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import Navbar from '../components/Navbar';
-import Horizontal from '@/components/Horizontal';
 const Hero = () => {
     gsap.registerPlugin(useGSAP);
     useGSAP(() => {
@@ -48,7 +47,6 @@ const Hero = () => {
                     </div>
                 </div>
             </div>
-            <Horizontal />
         </div>
 
     );

@@ -11,7 +11,6 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from '@/components/ui/textarea';
-
 function DialogDemo() {
     const [formData, setFormData] = useState({
         title: '',
@@ -97,9 +96,6 @@ function DialogDemo() {
         </Dialog>
     )
 }
-
-
-
 const Dashboard = () => {
     const [userData, setUserData] = useState(null);
     const [requests, setRequests] = useState([]);
@@ -210,16 +206,4 @@ const Dashboard = () => {
         </div>
     );
 };
-
 export default Dashboard;
-{/* <div className="min-w-[200px] md:min-w-[300px] min-h-[200px] p-6 bg-[#f2faff] border border-gray-100 rounded-lg shadow">
-<div className='mb-2'>
-    <h5 className="text-xl md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Dairy Product</h5>
-    <span>-user</span>
-</div>
-<p className="mb-3 font-normal text-gray-600 dark:text-gray-400">Bring it fast</p>
-<h1 className='my-5 font-bold text-xl md:text-2xl'>₹ 90 </h1>
-<a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-[#304b6b] rounded-[1] hover:bg-[#304b6a] focus:ring-4 focus:outline-none focus:ring-blue-300">
-    Accept
-</a>
-</div> */}
