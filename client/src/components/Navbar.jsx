@@ -49,9 +49,9 @@ const Navbar = () => {
                         <button onClick={handleLogout} className='bg-red-500 border-[1px] rounded-[1px] border-black text-white px-10 py-2 font-bold transition ease-in-out delay-150'>Logout</button>
                     </>
                 ) : (<>
-                    <button className='bg-white border-[1px] rounded-[1px] border-black px-10 py-2 font-bold
-                  transition ease-in-out delay-150 text-[#304C6B]'><NavLink to="/login">Login</NavLink></button>
-                    <button className='bg-[#304b6b] border-[1px] rounded-[1px] border-black text-white px-10 py-2 font-bold transition ease-in-out delay-150'><NavLink to="/register">Register</NavLink></button>
+                    <NavLink to="/login"><button className='bg-white border-[1px] rounded-[1px] border-black px-10 py-2 font-bold
+                  transition ease-in-out delay-150 text-[#304C6B]'>Login</button></NavLink>
+                    <NavLink to="/register"><button className='bg-[#304b6b] border-[1px] rounded-[1px] border-black text-white px-10 py-2 font-bold transition ease-in-out delay-150'>Register</button></NavLink>
                 </>)}
 
             </div>

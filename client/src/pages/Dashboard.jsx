@@ -166,10 +166,11 @@ const Dashboard = () => {
                                 <div key={request._id} className="flex flex-wrap gap-5">
                                     <div className="min-w-[200px] md:min-w-[300px] min-h-[200px] p-6 bg-[#f2faff] border border-gray-100 rounded-lg shadow">
                                         <h5 className="mb-2 text-xl md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{request.title}</h5>
+                                        <p className="mb-1 text-sm text-gray-600 dark:text-gray-400">Requested by: {request.user.name}</p>
                                         <p className="mb-3 font-normal text-gray-600 dark:text-gray-400">{request.description}</p>
                                         <h1 className='my-5 font-bold text-xl md:text-2xl'>₹ {request.price} </h1>
-                                        <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-500 rounded-[1] hover:bg-[#304b6a] focus:ring-4 focus:outline-none focus:ring-blue-300">
-                                            Pending
+                                        <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-600 rounded-[1] hover:bg-[#304b6a] focus:ring-4 focus:outline-none focus:ring-blue-300">
+                                            Accept
                                         </a>
                                     </div>
                                 </div>

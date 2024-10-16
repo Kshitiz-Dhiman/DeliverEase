@@ -125,9 +125,13 @@ app.get("/api/userexist", isloggedin, async (req, res) => {
     }
 })
 app.get("/api/allrequests", isloggedin, async (req, res) => {
-    let requests = await requestModel.find();
-    res.json(requests);
-})
+    try {
+        let requests = await requestModel.find().populate('user');
+        res.json(requests);
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 function isloggedin(req, res, next) {
     if (req.cookies.token === "") {
         res.redirect("/login");
