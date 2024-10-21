@@ -68,7 +68,6 @@ app.post("/api/login", async (req, res) => {
             if (result) {
                 const token = jwt.sign({ email: user.email, userId: user._id }, "verysecretkey");
                 res.cookie("token", token, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
-                console.log("Token created:", token);
                 res.json({ status: "success", user: token });
             } else {
                 res.status(401).send("Invalid password");

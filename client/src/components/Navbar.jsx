@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ className }) => {
     const [isloggedin, setIsloggedin] = useState(false);
     const handleLogout = async () => {
         try {
@@ -33,8 +33,8 @@ const Navbar = () => {
     }, [])
 
     return (
-        <nav className='fixed w-full m-auto p-5 flex justify-between items-center bg-white z-50'>
-            <NavLink to='/'><div className='overflow-hidden'><h1 className='nav1 text-[#001220] text-3xl font-bold leading-7 tracking-tighter shadow-2xl'>Deliver <br /> Ease</h1></div></NavLink>
+        <nav className={`fixed w-full m-auto p-5 flex justify-between items-center bg-white z-50 ${className}`}>
+            <NavLink to='/'><div className='overflow-hidden'><h1 className='nav1 text-3xl font-bold leading-7 tracking-tighter shadow-2xl'>Deliver <br /> Ease</h1></div></NavLink>
             <ul className='flex font-bold gap-10 text-[17px] tracking-wider'>
                 <NavLink to='/dashboard'><li className='hover-underline-animation center'>Profile</li></NavLink> /
                 <NavLink><li className='hover-underline-animation center'>About</li></NavLink> /
