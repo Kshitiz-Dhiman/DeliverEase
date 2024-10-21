@@ -5,7 +5,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from '../components/Navbar';
 import rightSvg from './images/right.svg';
 import { NavLink } from 'react-router-dom';
-// import video from './video/sample.mp4';
 import Horizontal from '../components/Horizontal';
 import Lenis from 'lenis';
 import bulb from './images/bulb.svg';
