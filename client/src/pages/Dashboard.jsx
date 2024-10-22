@@ -149,7 +149,7 @@ const Dashboard = () => {
     };
 
     if (!userData) {
-        return <div>Loading...</div>;
+        window.location.href = '/login';
     }
 
     return (
