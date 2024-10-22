@@ -84,7 +84,7 @@ const Hero = () => {
     }, [])
     return (
         <>
-            <div className='min-h-screen w-full'>
+            <main className='min-h-screen w-full'>
                 <Navbar className='navbar' />
                 <header className="h-full md:p-[100px]">
                     <div className='gap-y-3 flex flex-col w-full h-full py-20 relative z-[4]'>
@@ -140,7 +140,7 @@ const Hero = () => {
                     </div>
                 </header>
                 <section className='video h-screen w-full p-[100px] flex justify-center items-center'>
-                    <div className='h-full bg-red-400 w-full flex justify-center items-center rounded-[40px] shadow-2xl'>
+                    <div className='h-full w-full flex justify-center items-center rounded-[40px] shadow-2xl'>
                         <video className='w-full h-full object-cover object-center rounded-[40px] ' autoPlay loop muted>
                             <source src={sample} type='video/mp4' />
                         </video>
@@ -340,7 +340,7 @@ const Hero = () => {
                     '>Contact Us</button>
                     </div>
                 </footer>
-            </div >
+            </main>
         </>
     );
 };

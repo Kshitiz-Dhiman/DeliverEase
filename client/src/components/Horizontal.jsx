@@ -52,7 +52,7 @@ const Horizontal = () => {
                                     <span>1</span>
                                 </div>
                                 <div>
-                                    <img class="object-contain" width="1113" height="1113" src={sample} />
+                                    <img class="object-contain" width="1113" height="1113" src={sample} alt='img'/>
                                 </div>
                                 <div>
                                     <p className='text-[27px] text-gray-500'>We give you the flexibility to deploy various last-mile offerings</p>
@@ -65,7 +65,7 @@ const Horizontal = () => {
                                     <span>1</span>
                                 </div>
                                 <div>
-                                    <img class="object-contain" width="1113" height="1113" src={sample} />
+                                    <img class="object-contain" width="1113" height="1113" src={sample} alt='img'/>
                                 </div>
                                 <div>
                                     <p className='text-[27px] text-gray-500'>We give you the flexibility to deploy various last-mile offerings</p>
@@ -79,7 +79,7 @@ const Horizontal = () => {
                                     <span>1</span>
                                 </div>
                                 <div>
-                                    <img class="object-contain" width="1113" height="1113" src={sample} />
+                                    <img class="object-contain" width="1113" height="1113" src={sample} alt='img'/>
                                 </div>
                                 <div>
                                     <p className='text-[27px] text-gray-500'>We give you the flexibility to deploy various last-mile offerings</p>
