@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
     Dialog,
     DialogContent,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-} from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Textarea } from '@/components/ui/textarea';
-function DialogDemo() {
+import { toast } from 'react-toastify';
+
+function DialogDemo({ fetchRequests, notify }) {
     const [formData, setFormData] = useState({
         title: '',
         description: '',
         price: ''
     });
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -24,9 +27,11 @@ function DialogDemo() {
             [name]: value
         });
     };
+
     const postRequest = async (e) => {
         e.preventDefault();
-        const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/requests`, {
+        console.log('Submitting form data:', formData);
+        const response = await fetch('http://localhost:3000/api/requests', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -35,178 +40,158 @@ function DialogDemo() {
             body: JSON.stringify(formData),
         });
         if (response.ok) {
-            alert('Request submitted successfully');
-            location.reload();
+            notify('Request submitted successfully!', 'success');
+            fetchRequests();
         } else {
-            alert('Failed to submit request');
+            notify('Failed to submit request', 'error');
         }
-    }
+    };
+
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button className="bg-black rounded-full px-6 py-8 text-4xl">+</Button>
+                <Button className='bg-[#131e2a] text-white'>Add Order</Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent>
                 <DialogHeader>
                     <DialogTitle>Make your request</DialogTitle>
                 </DialogHeader>
                 <form onSubmit={postRequest}>
                     <div className="grid gap-4 py-4">
-                        <div className="grid grid-cols-4 items-center gap-4">
-                            <Label htmlFor="title" className="text-right">
-                                Title
-                            </Label>
+                        <div>
+                            <Label htmlFor="title">Title</Label>
                             <Input
                                 id="title"
                                 name="title"
                                 value={formData.title}
                                 onChange={handleChange}
-                                className="col-span-3"
+                                required
                             />
                         </div>
-                        <div className="grid grid-cols-4 items-center gap-4">
-                            <Label htmlFor="description" className="text-right">
-                                Description
-                            </Label>
+                        <div>
+                            <Label htmlFor="description">Description</Label>
                             <Textarea
                                 id="description"
                                 name="description"
                                 value={formData.description}
                                 onChange={handleChange}
-                                className="col-span-3"
+                                required
                             />
                         </div>
-                        <div className="grid grid-cols-4 items-center gap-4">
-                            <Label htmlFor="price" className="text-right">
-                                Price
-                            </Label>
+                        <div>
+                            <Label htmlFor="price">Price</Label>
                             <Input
                                 id="price"
                                 name="price"
+                                type="number"
                                 value={formData.price}
                                 onChange={handleChange}
-                                className="col-span-3"
-                                type="number"
+                                required
                             />
                         </div>
                     </div>
-                    <Button type="submit" >Submit</Button>
+                    <Button type="submit">
+                        Submit
+                    </Button>
                 </form>
             </DialogContent>
         </Dialog>
-    )
+    );
 }
+
 const Dashboard = () => {
     const [userData, setUserData] = useState(null);
     const [requests, setRequests] = useState([]);
-    const [allrequests, setAllRequests] = useState([]);
 
-    useEffect(() => {
-        async function fetchUserData() {
-            try {
-                const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/user`, {
-                    method: "GET",
-                    credentials: "include",
-                });
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
+    const fetchUserData = async () => {
+        try {
+            const response = await fetch("http://localhost:3000/api/user", {
+                method: "GET",
+                credentials: "include",
+            });
 
-                const data = await response.json();
-                setUserData(data);
-            } catch (error) {
-                console.error("There was an error fetching the user data:", error);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
+
+            const data = await response.json();
+            setUserData(data);
+        } catch (error) {
+            console.error("There was an error fetching the user data:", error);
         }
-        async function getRequest() {
-            const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/requests`, {
+    };
+
+    const getRequest = async () => {
+        try {
+            const response = await fetch("http://localhost:3000/api/requests", {
                 method: 'GET',
                 credentials: 'include'
-            })
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
             const data = await response.json();
             setRequests(data);
+        } catch (error) {
+            console.error("There was an error fetching the requests:", error);
         }
-        async function allRequests() {
-            const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/allrequests`, {
-                method: 'GET',
-                credentials: 'include'
-            })
-            const data = await response.json();
-            setAllRequests(data);
-        }
+    };
+
+    useEffect(() => {
         fetchUserData();
         getRequest();
-        allRequests();
     }, []);
 
-    if (!userData) {
-        return <div className=''>
+    const notify = (message, type) => {
+        toast(message, { type });
+    };
 
-        </div>;
+    if (!userData) {
+        return <div>Loading...</div>;
     }
 
     return (
         <div className='min-h-screen w-full'>
             <Navbar />
-            <div className='min-h-[300px] px-20 pt-16'>
+            <div className='bg-[#131e2a] text-white min-h-[300px] p-5 md:p-20'>
                 <h1 className='text-[30px] md:text-[60px] tracking-tight font-bold mt-10'>Welcome back {userData.name}</h1>
                 {userData.type === "dayScholar" ? (
                     <h2 className='text-[20px] md:text-[30px] text-gray-400 font-bold tracking-tight'>Day Scholar</h2>
                 ) : (
                     <h2 className='text-[20px] md:text-[30px] text-gray-400 font-bold tracking-tight'>Hosteller</h2>
                 )}
-                <button className='bg-black my-5 shadow-2xl rounded-[10px] border-black text-white px-7 py-3 font-bold transition ease-in-out delay-150 hover:bg-[#1d3557] focus:outline-none focus:ring-2 focus:ring-[#1d3557]'>See Profile</button>
+                <button className='bg-[#304b6b] border-[1px] rounded-[1px] border-black text-white mt-5 px-5 py-2 md:px-10 font-bold transition ease-in-out delay-150'>See Profile</button>
             </div>
-            <hr class="my-12 w-3/4 m-auto h-0.5 border-t-0 bg-neutral-200 dark:bg-white/10" />
             <div className='min-h-full m-5 md:m-20'>
                 <h1 className='font-bold text-3xl md:text-5xl my-5'>{userData.type === "dayScholar" ? "Active" : "Your"} Orders</h1>
-                {userData.type === "dayScholar" ? (
-                    <div className="flex flex-wrap gap-5">
-                        {allrequests.slice().reverse().map((request) => {
-                            return (
-                                <div key={request._id} className="flex flex-wrap gap-5">
-                                    <div className="min-w-[200px] md:min-w-[300px] min-h-[200px] p-6 bg-[#eceff1] border border-black-100 rounded-xl shadow hover:shadow-2xl transition duration-300 ease-in-out transform  hover:scale-[1.06] hover:bg-white
-                                    ">
-                                        <h5 className="mb-2 text-xl md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{request.title}</h5>
-                                        <p className="mb-1 text-sm text-gray-600 dark:text-gray-400">Requested by: {request.user.name}</p>
-                                        <p className="mb-3 font-normal text-gray-600 dark:text-gray-400">{request.description}</p>
-                                        <h1 className='my-5 font-bold text-xl md:text-2xl'>₹ {request.price} </h1>
-                                        <a href="#" className="bg-green-500 rounded-[10px] border-black text-white px-7 py-3 font-bold transition ease-in-out delay-150 shadow-2xl hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500">
-                                            Accept
-                                        </a>
-                                    </div>
-                                </div>
-                            )
-                        })}
+                <>
+                    <div className='text-3xl fixed flex text-white w-16 bottom-0 m-10 right-0 h-16 justify-center items-center rounded-full'>
+                        <DialogDemo fetchRequests={getRequest} notify={notify} />
                     </div>
-                ) : (
-                    <>
-                        <div className='text-3xl fixed flex text-white w-16 bottom-0 m-10 right-0 h-16 justify-center items-center rounded-full'>
-                            <DialogDemo />
-                        </div>
-                        <div className="flex flex-wrap gap-5">
-                            {
-                                requests.slice().reverse().map((request) => {
-                                    return (
-                                        <div key={request._id} className="flex flex-wrap gap-5">
-                                            <div className="min-w-[200px] md:min-w-[300px] min-h-[200px] p-6 bg-white border border-black-100 rounded-xl shadow hover:shadow-2xl transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-1 hover:bg-[#f2faff] hover:border-[#1d3557]">
-                                                <h5 className="mb-2 text-xl md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{request.title}</h5>
-                                                <p className="mb-3 font-normal text-gray-600 dark:text-gray-400">{request.description}</p>
-                                                <h1 className='my-5 font-bold text-xl md:text-2xl'>₹ {request.price} </h1>
-                                                <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-500 rounded-[1] hover:bg-[#304b6a] focus:ring-4 focus:outline-none focus:ring-blue-300">
-                                                    Pending
-                                                </a>
-                                            </div>
+                    <div className="flex flex-wrap gap-5">
+                        {
+                            requests.slice().reverse().map((request) => {
+                                return (
+                                    <div key={request._id} className="flex flex-wrap gap-5">
+                                        <div className="min-w-[200px] md:min-w-[300px] min-h-[200px] p-6 bg-[#f2faff] border border-gray-100 rounded-lg shadow">
+                                            <h5 className="mb-2 text-xl md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{request.title}</h5>
+                                            <p className="mb-3 font-normal text-gray-600 dark:text-gray-400">{request.description}</p>
+                                            <h1 className='my-5 font-bold text-xl md:text-2xl'>₹ {request.price} </h1>
+                                            <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-500 rounded-[1] hover:bg-[#304b6a] focus:ring-4 focus:outline-none focus:ring-blue-300">
+                                                Pending
+                                            </a>
                                         </div>
-                                    )
-                                })
-                            }
-                        </div>
-                    </>
-
-                )}
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                </>
             </div>
         </div>
     );
 };
+
 export default Dashboard;

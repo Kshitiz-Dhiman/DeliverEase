@@ -1,16 +1,20 @@
-import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { NavLink } from "react-router-dom"
-import { useState } from "react"
+import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import Loader from '@/components/Loader';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Component() {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
+    const [isloading, setisloading] = useState(false);
 
     async function loginUser(e) {
         e.preventDefault();
+        setisloading(true);
         try {
             const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/login`, {
                 method: "POST",
@@ -28,16 +32,20 @@ export default function Component() {
             }
             const data = await response.json();
             if (data.user) {
-                alert("Login successful!");
+                setisloading(false);
                 window.location.href = "/dashboard";
             } else {
+                setisloading(false);
                 alert("Login failed!");
             }
 
         } catch (error) {
+            setisloading(false);
+            notifyError("There was an error with the login request.");
             console.error("There was an error with the login request:", error);
         }
     }
+
     return (
         <div className="flex justify-center items-center h-screen">
             <Card className="w-full max-w-md p-6 sm:p-8">
@@ -67,11 +75,11 @@ export default function Component() {
                     </div>
                     <CardFooter className="m-3">
                         <Button type="submit" className="w-full mt-[10px]">
-                            Login
+                            {isloading ? <Loader /> : "Login"}
                         </Button>
                     </CardFooter>
                 </form>
             </Card>
         </div>
-    )
+    );
 }
