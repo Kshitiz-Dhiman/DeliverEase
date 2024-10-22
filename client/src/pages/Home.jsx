@@ -11,9 +11,9 @@ import bulb from './images/bulb.svg';
 import illustrate from './images/illustrate.png';
 import profile from './images/profile.png';
 import sample from './video/sample.mp4';
+gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrollTrigger);
 const Hero = () => {
-    gsap.registerPlugin(useGSAP);
-    gsap.registerPlugin(ScrollTrigger);
     useGSAP(() => {
         gsap.utils.toArray('.card').forEach((card) => {
             gsap.to(card, {
@@ -50,8 +50,6 @@ const Hero = () => {
             },
         });
     })
-
-
     useEffect(() => {
         const lenis = new Lenis();
         function raf(time) {
