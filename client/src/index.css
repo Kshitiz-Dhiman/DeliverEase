@@ -42,6 +42,18 @@ body {
 
 }
 
+details summary::marker {
+    display: none;
+}
+
+details summary {
+    list-style: none;
+}
+
+details {
+    cursor: pointer;
+}
+
 .section {
     scroll-snap-align: start;
 }

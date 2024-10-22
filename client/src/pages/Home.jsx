@@ -9,7 +9,7 @@ import Horizontal from '../components/Horizontal';
 import Lenis from 'lenis';
 import bulb from './images/bulb.svg';
 import illustrate from './images/illustrate.png';
-
+import profile from './images/profile.png';
 const Hero = () => {
     gsap.registerPlugin(useGSAP);
     gsap.registerPlugin(ScrollTrigger);
@@ -58,13 +58,35 @@ const Hero = () => {
             requestAnimationFrame(raf);
         }
         requestAnimationFrame(raf);
+        const particles = document.querySelectorAll('.particle');
+
+        const handleMouseMove = (event) => {
+            const { clientX, clientY } = event;
+            particles.forEach((particle) => {
+                const rect = particle.getBoundingClientRect();
+                const dx = (clientX - rect.left - rect.width / 2) * 0.02;
+                const dy = (clientY - rect.top - rect.height / 2) * 0.02;
+                gsap.to(particle, {
+                    x: dx,
+                    y: dy,
+                    duration: 0.3,
+                    ease: 'power2.out',
+                });
+            });
+        };
+
+        document.addEventListener('mousemove', handleMouseMove);
+
+        return () => {
+            document.removeEventListener('mousemove', handleMouseMove);
+        };
     }, [])
     return (
         <>
             <div className='min-h-screen w-full'>
                 <Navbar className='navbar' />
                 <header className="h-full md:p-[100px]">
-                    <div className='gap-y-3 flex flex-col w-full h-full py-20 relative z-[6]'>
+                    <div className='gap-y-3 flex flex-col w-full h-full py-20 relative z-[4]'>
                         <div className='overflow-hidden text-center'>
                             <h1 className='heading text-[140px] font-bold  tracking-tighter  md:leading-[120px] bg-gradient-to-r from-[#7c7c7f] to-[#2f2f33] inline-block text-transparent bg-clip-text'>
                                 Doorstep<span className='block'>Convenience</span>
@@ -84,32 +106,32 @@ const Hero = () => {
                             </NavLink>
                         </div>
                     </div>
-                    <div className='absolute h-[60vh] w-[70vw] z-[5] top-[0px] left-[150px] m-32'>
-                        <div className='
+                    <div className='absolute h-[60vh] w-[70vw] z-[7] top-[0px] left-[150px] m-32'>
+                        <div className=' particle
                             bg-black opacity-[0.3] absolute w-[30px] h-[30px] rounded-[10px]
                             transform right-[232px] rotate-45 top-[10px]
                         '>
-                        </div><div className='
+                        </div><div className=' particle
                             bg-black absolute opacity-[0.2] w-[20px] h-[20px] rounded-[5px]
                             transform right-[50px] top-[100px] rotate-45
                         '>
                         </div>
-                        <div className='
+                        <div className='particle
                             bg-black absolute opacity-[0.1] w-[17px] h-[17px] rounded-[5px]
                             transform right-[130px] bottom-[290px] rotate-45
                         '>
                         </div>
-                        <div className='
-                            bg-black absolute opacity-[0.2] w-[40px] h-[40px] rounded-[10px]
+                        <div className='particle
+                            bg-black absolute opacity-[0.16] w-[40px] h-[40px] rounded-[10px]
                             transform left-[232px] rotate-[45deg]
                         '>
                         </div>
-                        <div className='
+                        <div className='particle
                             bg-black absolute opacity-[0.3] w-[20px] h-[20px] rounded-[5px]
                             transform rotate-[70deg] left-[20px] top-[100px]
                         '>
                         </div>
-                        <div className='
+                        <div className='particle
                             absolute bg-black opacity-[0.2] w-[45px] h-[45px] rounded-xl
                             transform left-[90px] bottom-[290px] rotate-45
                         '>
@@ -117,13 +139,96 @@ const Hero = () => {
                     </div>
                 </header>
                 <section className='video h-screen w-full p-[100px] flex justify-center items-center'>
-                    <div className='h-full w-full flex justify-center items-center rounded-[40px] shadow-2xl'>
+                    <div className='h-full bg-red-400 w-full flex justify-center items-center rounded-[40px] shadow-2xl'>
                         <video className='w-full h-full object-cover object-center rounded-[40px] ' autoPlay loop muted>
                             {/* <source src={video} type='video/mp4' /> */}
                         </video>
                     </div>
                 </section>
                 <Horizontal />
+                <section className='w-full min-h-screen p-20 flex flex-col gap-7'>
+                    <div className='text-center'>
+                        <h1 className='text-orange-500 uppercase text-xl'>Feedbacks</h1>
+                        <p className='text-6xl font-bold'>What our customers are saying</p>
+                    </div>
+                    <div class="grid grid-rows-3 h-full grid-flow-col gap-4 px-4 py-4 leading-10">
+                        <div class="p-4 bg-[#f5f5f5] shadow-sm rounded-xl row-span-3 w-full ">
+                            <div className='flex flex-col gap-3'>
+                                <div class="flex gap-4 items-center">
+                                    <div class="flex h-12 w-12 items-center bg-gray-500 justify-center rounded-full">
+                                        <img src={profile} alt="User 1" />
+                                    </div>
+                                    <h1 className='
+                                    text-[25px] font-bold hover:underline cursor-pointer transition
+                                '>User 1</h1>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 leading-7">Lorem ipsum dolor sit amet <br /> consectetur adipisicing elit. Quas, quae</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 w-full bg-[#f5f5f5] shadow-sm rounded-xl col-span-2">
+                            <div className='flex flex-col gap-3'>
+                                <div class="flex gap-4 items-center">
+                                    <div class="flex h-12 w-12 items-center bg-gray-500 justify-center rounded-full">
+                                        <img src={profile} alt="User 2" />
+                                    </div>
+                                    <h1 className='
+                                    text-[25px] font-bold hover:underline cursor-pointer transition
+                                '>User 2</h1>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 leading-7">Lorem ipsum dolor sit amet <br /> consectetur adipisicing elit. Quas, quae.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 w-full bg-[#f5f5f5] shadow-sm rounded-xl row-span-2 col-span-2">
+                            <div className='flex flex-col gap-3'>
+                                <div class="flex gap-4 items-center">
+                                    <div class="flex h-12 w-12 items-center bg-gray-500 justify-center rounded-full">
+                                        <img src={profile} alt="User 3" />
+                                    </div>
+                                    <h1 className='
+                                    text-[25px] font-bold hover:underline cursor-pointer transition
+                                '>User 3</h1>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 leading-7">Lorem ipsum dolor sit amet <br /> consectetur adipisicing elit. Quas, quae.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 w-full bg-[#f5f5f5] shadow-sm rounded-xl col-span-2 row-span-2">
+                            <div className='flex flex-col gap-3'>
+                                <div class="flex gap-4 items-center">
+                                    <div class="flex h-12 w-12 items-center bg-gray-500 justify-center rounded-full">
+                                        <img src={profile} alt="User 4" />
+                                    </div>
+                                    <h1 className='
+                                    text-[25px] font-bold hover:underline cursor-pointer transition
+                                '>User 4</h1>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 leading-7">Lorem ipsum dolor sit amet <br /> consectetur adipisicing elit. Quas, quae.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 w-full bg-[#f5f5f5] shadow-sm rounded-xl row-span-1 col-span-2">
+                            <div className='flex flex-col gap-3'>
+                                <div class="flex gap-4 items-center">
+                                    <div class="flex h-12 w-12 items-center bg-gray-500 justify-center rounded-full">
+                                        <img src={profile} alt="User 5" />
+                                    </div>
+                                    <h1 className='
+                                    text-[25px] font-bold hover:underline cursor-pointer transition
+                                '>User 5</h1>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 leading-7">Lorem ipsum dolor sit amet <br /> consectetur adipisicing elit. Quas, quae.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section >
                 <section className='w-full flex flex-col items-center justify-center gap-5 text-black p-20'>
                     <div className='flex flex-col text-center gap-3 my-10 '>
                         <h1 className='text-red-400 text-2xl'>Benefits</h1>
@@ -175,6 +280,52 @@ const Hero = () => {
                         </div>
                     </article>
                 </section>
+                <section className='w-full h-[70vh] flex gap-10 p-32 px-40'>
+                    <div className='w-full flex flex-col gap-3'>
+                        <h1 className='text-orange-500 uppercase text-xl'>faq</h1>
+                        <p className='text-6xl'>
+                            Questions? <br />
+                            Answers.
+                        </p>
+                        <p className='text-2xl text-gray-500'>
+                            We have a lot to offer, <br />
+                            here is a sneak peak
+                        </p>
+                    </div>
+                    <div className='w-full flex flex-col gap-5'>
+                        <details className='shadow-md rounded-lg p-5 bg-[#f5f5f5]'>
+                            <summary className='text-xl'>What is DeliverEase?</summary>
+                            <p className='
+                                text-gray-500 text-xl py-5
+                            '>DeliverEase is a delivery service that connects you with the best delivery agents in your area</p>
+                        </details>
+                        <details className='shadow-md rounded-lg p-5 bg-[#f5f5f5]'>
+                            <summary className='text-xl'>How does DeliverEase work?</summary>
+                            <p className='text-gray-500 text-xl py-5'>
+                                DeliverEase uses a network of local delivery agents to pick up and deliver your items quickly and efficiently.
+                            </p>
+                        </details>
+                        <details className='shadow-md rounded-lg p-5 bg-[#f5f5f5]'>
+                            <summary className='text-xl'>What areas do you serve?</summary>
+                            <p className='text-gray-500 text-xl py-5'>
+                                We currently serve major metropolitan areas and are continuously expanding to new locations.
+                            </p>
+                        </details>
+                        <details className='shadow-md rounded-lg p-5 bg-[#f5f5f5]'>
+                            <summary className='text-xl'>How can I track my delivery?</summary>
+                            <p className='text-gray-500 text-xl py-5'>
+                                You can track your delivery in real-time through our app or website using the tracking number provided.
+                            </p>
+                        </details>
+                        <details className='shadow-md rounded-lg p-5 bg-[#f5f5f5]'>
+                            <summary className='text-xl'>What if I need to change my delivery details?</summary>
+                            <p className='text-gray-500 text-xl py-5'>
+                                You can easily update your delivery details through our app or by contacting our customer support team.
+                            </p>
+                        </details>
+                    </div>
+                </section>
+
                 <footer className=' footer
                 w-full h-screen flex flex-col gap-2
             '>
@@ -188,7 +339,7 @@ const Hero = () => {
                     '>Contact Us</button>
                     </div>
                 </footer>
-            </div>
+            </div >
         </>
     );
 };
