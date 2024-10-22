@@ -5,7 +5,7 @@ const Navbar = ({ className }) => {
     const [isloggedin, setIsloggedin] = useState(false);
     const handleLogout = async () => {
         try {
-            const response = await fetch("http://localhost:3000/api/logout", {
+            const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/logout`, {
                 method: "GET",
                 credentials: "include",
             });
@@ -17,13 +17,15 @@ const Navbar = ({ className }) => {
     useEffect(() => {
         const checkLogin = async () => {
             try {
-                const response = await fetch("http://localhost:3000/api/userexist", {
+                const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/userexist`, {
                     method: "GET",
                     credentials: "include",
                 });
-                const data = await response.json();
-                if (data.status === "ok") {
-                    setIsloggedin(true);
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.status === "ok") {
+                        setIsloggedin(true);
+                    }
                 }
             } catch (error) {
                 console.error(error);

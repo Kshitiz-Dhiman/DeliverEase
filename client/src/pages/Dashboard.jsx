@@ -26,7 +26,7 @@ function DialogDemo() {
     };
     const postRequest = async (e) => {
         e.preventDefault();
-        const response = await fetch('http://localhost:3000/api/requests', {
+        const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/requests`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ const Dashboard = () => {
     useEffect(() => {
         async function fetchUserData() {
             try {
-                const response = await fetch("http://localhost:3000/api/user", {
+                const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/user`, {
                     method: "GET",
                     credentials: "include",
                 });
@@ -117,10 +117,9 @@ const Dashboard = () => {
             } catch (error) {
                 console.error("There was an error fetching the user data:", error);
             }
-
         }
         async function getRequest() {
-            const response = await fetch("http://localhost:3000/api/requests", {
+            const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/requests`, {
                 method: 'GET',
                 credentials: 'include'
             })
@@ -128,7 +127,7 @@ const Dashboard = () => {
             setRequests(data);
         }
         async function allRequests() {
-            const response = await fetch("http://localhost:3000/api/allrequests", {
+            const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/allrequests`, {
                 method: 'GET',
                 credentials: 'include'
             })

@@ -126,8 +126,6 @@ app.post("/api/requests", isloggedin, async (req, res) => {
 app.get("/api/userexist", isloggedin, async (req, res) => {
     if (req.user.userId) {
         res.send({ status: "ok" });
-    } else {
-        res.send({ status: "error" });
     }
 })
 app.get("/api/allrequests", isloggedin, async (req, res) => {
