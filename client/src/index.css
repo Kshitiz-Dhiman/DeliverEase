@@ -5,7 +5,8 @@
 
 @font-face {
     font-family: 'PP Mori';
-    src: url('./fonts/PPMori-Regular.otf') format('opentype');
+    src: url('./pages/Font/PPMori-Regular.otf') format('opentype');
+    /* Corrected path */
     font-weight: normal;
     font-style: normal;
 }
