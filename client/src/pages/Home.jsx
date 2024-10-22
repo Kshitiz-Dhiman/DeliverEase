@@ -10,6 +10,7 @@ import Lenis from 'lenis';
 import bulb from './images/bulb.svg';
 import illustrate from './images/illustrate.png';
 import profile from './images/profile.png';
+import sample from './video/sample.mp4';
 const Hero = () => {
     gsap.registerPlugin(useGSAP);
     gsap.registerPlugin(ScrollTrigger);
@@ -141,7 +142,7 @@ const Hero = () => {
                 <section className='video h-screen w-full p-[100px] flex justify-center items-center'>
                     <div className='h-full bg-red-400 w-full flex justify-center items-center rounded-[40px] shadow-2xl'>
                         <video className='w-full h-full object-cover object-center rounded-[40px] ' autoPlay loop muted>
-                            {/* <source src={video} type='video/mp4' /> */}
+                            <source src={sample} type='video/mp4' />
                         </video>
                     </div>
                 </section>
