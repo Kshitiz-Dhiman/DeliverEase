@@ -147,6 +147,58 @@ const Hero = () => {
                     </div>
                 </section>
                 <Horizontal />
+
+                <section className='w-full flex flex-col items-center justify-center gap-5 text-black p-20'>
+                    <div className='flex flex-col text-center gap-3 my-10 '>
+                        <h1 className='text-red-400 text-2xl'>Benefits</h1>
+                        <p className='text-6xl font-bold'>
+                            Our services streamlines your <br />
+                            existing delivery process
+                        </p>
+                    </div>
+                    <article className='card h-[50vh] sticky top-[15vh] bg-[#f5f5f5] w-[65vw] flex gap-5 rounded-[20px] p-10 shadow-sm'>
+                        <div className='w-full flex flex-col gap-4'>
+                            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white">
+                                <img src={bulb} alt="" />
+                            </div>
+                            <h1 className='font-bold text-4xl'>Empower and Connect</h1>
+                            <h2 className='text-xl text-gray-500'>Utilize our platform to foster community <br /> engagement and collaboration</h2>
+                        </div>
+                        <div className='w-full'>
+                            <div className='w-full h-full flex justify-center items-center'>
+                                <img src={illustrate} alt="" />
+                            </div>
+                        </div>
+                    </article>
+                    <article className='card h-[50vh] sticky top-[15vh] bg-[#f5f5f5] w-[65vw] flex gap-5 rounded-[20px] p-10 shadow-sm'>
+                        <div className='w-full flex flex-col gap-4'>
+                            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white">
+                                <img src={bulb} alt="" />
+                            </div>
+                            <h1 className='font-bold text-4xl'>Empower and Connect</h1>
+                            <h2 className='text-xl text-gray-500'>Utilize our platform to foster community <br /> engagement and collaboration</h2>
+                        </div>
+                        <div className='w-full'>
+                            <div className='w-full h-full flex justify-center items-center'>
+                                <img src={illustrate} alt="" />
+                            </div>
+                        </div>
+                    </article>
+                    <article className='card h-[50vh] sticky top-[15vh] bg-[#f5f5f5] w-[65vw] flex gap-5 rounded-[20px] p-10 shadow-sm'>
+                        <div className='w-full flex flex-col gap-4'>
+                            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white">
+                                <img src={bulb} alt="" />
+                            </div>
+                            <h1 className='font-bold text-4xl'>Empower and Connect</h1>
+                            <h2 className='text-xl text-gray-500'>Utilize our platform to foster community <br /> engagement and collaboration</h2>
+                        </div>
+                        <div className='w-full'>
+                            <div className='w-full h-full flex justify-center items-center'>
+                                <img src={illustrate} alt="" />
+                            </div>
+                        </div>
+                    </article>
+                </section>
                 <section className='w-full min-h-screen p-20 flex flex-col gap-7'>
                     <div className='text-center'>
                         <h1 className='text-orange-500 uppercase text-xl'>Feedbacks</h1>
@@ -230,57 +282,6 @@ const Hero = () => {
                         </div>
                     </div>
                 </section >
-                <section className='w-full flex flex-col items-center justify-center gap-5 text-black p-20'>
-                    <div className='flex flex-col text-center gap-3 my-10 '>
-                        <h1 className='text-red-400 text-2xl'>Benefits</h1>
-                        <p className='text-6xl font-bold'>
-                            Our services streamlines your <br />
-                            existing delivery process
-                        </p>
-                    </div>
-                    <article className='card h-[50vh] sticky top-[15vh] bg-[#f5f5f5] w-[65vw] flex gap-5 rounded-[20px] p-10 shadow-sm'>
-                        <div className='w-full flex flex-col gap-4'>
-                            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white">
-                                <img src={bulb} alt="" />
-                            </div>
-                            <h1 className='font-bold text-4xl'>Empower and Connect</h1>
-                            <h2 className='text-xl text-gray-500'>Utilize our platform to foster community <br /> engagement and collaboration</h2>
-                        </div>
-                        <div className='w-full'>
-                            <div className='w-full h-full flex justify-center items-center'>
-                                <img src={illustrate} alt="" />
-                            </div>
-                        </div>
-                    </article>
-                    <article className='card h-[50vh] sticky top-[15vh] bg-[#f5f5f5] w-[65vw] flex gap-5 rounded-[20px] p-10 shadow-sm'>
-                        <div className='w-full flex flex-col gap-4'>
-                            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white">
-                                <img src={bulb} alt="" />
-                            </div>
-                            <h1 className='font-bold text-4xl'>Empower and Connect</h1>
-                            <h2 className='text-xl text-gray-500'>Utilize our platform to foster community <br /> engagement and collaboration</h2>
-                        </div>
-                        <div className='w-full'>
-                            <div className='w-full h-full flex justify-center items-center'>
-                                <img src={illustrate} alt="" />
-                            </div>
-                        </div>
-                    </article>
-                    <article className='card h-[50vh] sticky top-[15vh] bg-[#f5f5f5] w-[65vw] flex gap-5 rounded-[20px] p-10 shadow-sm'>
-                        <div className='w-full flex flex-col gap-4'>
-                            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white">
-                                <img src={bulb} alt="" />
-                            </div>
-                            <h1 className='font-bold text-4xl'>Empower and Connect</h1>
-                            <h2 className='text-xl text-gray-500'>Utilize our platform to foster community <br /> engagement and collaboration</h2>
-                        </div>
-                        <div className='w-full'>
-                            <div className='w-full h-full flex justify-center items-center'>
-                                <img src={illustrate} alt="" />
-                            </div>
-                        </div>
-                    </article>
-                </section>
                 <section className='w-full h-[70vh] flex gap-10 p-32 px-40'>
                     <div className='w-full flex flex-col gap-3'>
                         <h1 className='text-orange-500 uppercase text-xl'>faq</h1>
@@ -326,7 +327,6 @@ const Hero = () => {
                         </details>
                     </div>
                 </section>
-
                 <footer className=' footer
                 w-full h-screen flex flex-col gap-2
             '>

@@ -7,7 +7,14 @@ const saltRounds = 10;
 const cookieParser = require('cookie-parser');
 const cors = require("cors");
 const requestModel = require('./models/request-model');
-
+const dotenv = require('dotenv');
+dotenv.config();
+const mongoose = require('mongoose');
+mongoose.connect(process.env.DB_URL);
+mongoose.connection.on("error", (err) => {
+    console.error("Error connecting to MongoDB:", err);
+});
+console.log("Connected to MongoDB");
 app.use(cors({
     origin: "http://localhost:5173",
     credentials: true
@@ -40,7 +47,7 @@ app.post("/api/register", async (req, res) => {
                         password: hash,
                         type
                     });
-                    const token = jwt.sign({ email: email, userId: user._id }, "verysecretkey");
+                    const token = jwt.sign({ email: email, userId: user._id }, process.env.JWT_KEY);
                     res.cookie("token", token, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
                     res.send({ status: "ok" });
                 } catch (err) {
@@ -66,7 +73,7 @@ app.post("/api/login", async (req, res) => {
                 return res.status(500).send("Error comparing passwords");
             }
             if (result) {
-                const token = jwt.sign({ email: user.email, userId: user._id }, "verysecretkey");
+                const token = jwt.sign({ email: user.email, userId: user._id }, process.env.JWT_KEY);
                 res.cookie("token", token, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
                 res.json({ status: "success", user: token });
             } else {
@@ -132,12 +139,20 @@ app.get("/api/allrequests", isloggedin, async (req, res) => {
     }
 });
 function isloggedin(req, res, next) {
-    if (req.cookies.token === "") {
-        res.redirect("/login");
-    } else {
-        let data = jwt.verify(req.cookies.token, "verysecretkey");
-        req.user = data;
+    const token = req.cookies.token;
+    if (!token) {
+        return res.status(401).json({ error: "Access denied. No token provided." });
     }
-    next();
+
+    try {
+        const data = jwt.verify(token, process.env.JWT_KEY);
+        req.user = data;
+        next();
+    } catch (error) {
+        return res.status(400).json({ error: "Invalid token." });
+    }
 }
-app.listen(3000);
+
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});
