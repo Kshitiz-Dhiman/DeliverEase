@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import Loader from '@/components/Loader';
-import 'react-toastify/dist/ReactToastify.css';
 
 export default function Component() {
     const [password, setPassword] = useState("");
@@ -33,6 +32,7 @@ export default function Component() {
             const data = await response.json();
             if (data.user) {
                 setisloading(false);
+                alert("Login successful!");
                 window.location.href = "/dashboard";
             } else {
                 setisloading(false);
@@ -41,7 +41,6 @@ export default function Component() {
 
         } catch (error) {
             setisloading(false);
-            notifyError("There was an error with the login request.");
             console.error("There was an error with the login request:", error);
         }
     }
