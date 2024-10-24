@@ -40,9 +40,9 @@ const Horizontal = () => {
                             '/>
                         </div>
                         <div className='w-full py-36 px-10'>
-                            <p className='text-2xl text-red-400 uppercase'>Offering</p>
-                            <p className='text-[50px] font-bold leading-[59px]'>Unparalleled flexibility that will fit any pharmacy's needs</p>
-                            <p className='text-[27px] text-gray-500'>We give you the flexibility to deploy various last-mile offerings</p>
+                            <p className='text-2xl text-red-400 uppercase'>Location</p>
+                            <p className='text-[50px] font-bold leading-[59px]'>Delivery Zone</p>
+                            <p className='text-[27px] text-gray-500'></p>
                         </div>
                     </div>
                     <div className="scroll-section flex gap-6 p-44">
@@ -55,20 +55,20 @@ const Horizontal = () => {
                                     <img class="object-contain" width="1113" height="1113" src={sample} alt='img'/>
                                 </div>
                                 <div>
-                                    <p className='text-[27px] text-gray-500'>We give you the flexibility to deploy various last-mile offerings</p>
+                                    <p className='text-[20px] text-gray-500'>Create an account on our platform by providing your basic information. It's quick and easy!</p>
                                 </div>
                             </div>
                         </div>
                         <div className='bg-[#f5f5f5] w-full rounded-3xl flex p-8'>
                             <div class="flex flex-col gap-6">
                                 <div class="flex h-12 w-12 items-center justify-center rounded-full bg-white">
-                                    <span>1</span>
+                                    <span>2</span>
                                 </div>
                                 <div>
                                     <img class="object-contain" width="1113" height="1113" src={sample} alt='img'/>
                                 </div>
                                 <div>
-                                    <p className='text-[27px] text-gray-500'>We give you the flexibility to deploy various last-mile offerings</p>
+                                    <p className='text-[20px] text-gray-500'>Browse through our wide range of products and select the items you need. Add them to your cart and proceed to checkout.</p>
                                 </div>
                             </div>
 
@@ -76,13 +76,13 @@ const Horizontal = () => {
                         <div className='bg-[#f5f5f5] w-full rounded-3xl flex p-8'>
                             <div class="flex flex-col gap-6">
                                 <div class="flex h-12 w-12 items-center justify-center rounded-full bg-white">
-                                    <span>1</span>
+                                    <span>3</span>
                                 </div>
                                 <div>
                                     <img class="object-contain" width="1113" height="1113" src={sample} alt='img'/>
                                 </div>
                                 <div>
-                                    <p className='text-[27px] text-gray-500'>We give you the flexibility to deploy various last-mile offerings</p>
+                                    <p className='text-[20px] text-gray-500'>Sit back and relax while our community-based delivery team brings your order right to your doorstep. Enjoy the convenience of hassle-free delivery!</p>
                                 </div>
                             </div>
                         </div>

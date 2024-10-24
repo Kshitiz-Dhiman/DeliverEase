@@ -9,6 +9,8 @@ import Horizontal from '../components/Horizontal';
 import Lenis from 'lenis';
 import bulb from './images/bulb.svg';
 import illustrate from './images/illustrate.png';
+import community from './images/community.png';
+import fastandreliabledelivery from './images/fast and reliable delivery.png';
 import profile from './images/profile.png';
 import sample from './video/sample.mp4';
 gsap.registerPlugin(useGSAP);
@@ -148,7 +150,7 @@ const Hero = () => {
 
                 <section className='w-full flex flex-col items-center justify-center gap-5 text-black p-20'>
                     <div className='flex flex-col text-center gap-3 my-10 '>
-                        <h1 className='text-red-400 text-2xl'>Benefits</h1>
+                        <h1 className='text-red-400 text-2xl'>Features</h1>
                         <p className='text-6xl font-bold'>
                             Our services streamlines your <br />
                             existing delivery process
@@ -159,8 +161,8 @@ const Hero = () => {
                             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white">
                                 <img src={bulb} alt="" />
                             </div>
-                            <h1 className='font-bold text-4xl'>Empower and Connect</h1>
-                            <h2 className='text-xl text-gray-500'>Utilize our platform to foster community <br /> engagement and collaboration</h2>
+                            <h1 className='font-bold text-4xl'>Convenience and Efficiency</h1>
+                            <h2 className='text-l text-gray-500'>DeliverEase will lead to a measurable increase in convenience and efficiency for hostellers in acquiring essential items. Hostellers are expected to experience a reduction in the time and effort spent obtaining necessities.</h2>
                         </div>
                         <div className='w-full'>
                             <div className='w-full h-full flex justify-center items-center'>
@@ -173,12 +175,12 @@ const Hero = () => {
                             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white">
                                 <img src={bulb} alt="" />
                             </div>
-                            <h1 className='font-bold text-4xl'>Empower and Connect</h1>
-                            <h2 className='text-xl text-gray-500'>Utilize our platform to foster community <br /> engagement and collaboration</h2>
+                            <h1 className='font-bold text-4xl'>Fast and Reliable</h1>
+                            <h2 className='text-l text-gray-500'>DeliverEase prioritizes timely and efficient deliveries. Our platform uses advanced algorithms to optimize delivery routes and ensure orders are fulfilled promptly.</h2>
                         </div>
                         <div className='w-full'>
                             <div className='w-full h-full flex justify-center items-center'>
-                                <img src={illustrate} alt="" />
+                                <img src={fastandreliabledelivery} alt=""  />
                             </div>
                         </div>
                     </article>
@@ -187,12 +189,12 @@ const Hero = () => {
                             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white">
                                 <img src={bulb} alt="" />
                             </div>
-                            <h1 className='font-bold text-4xl'>Empower and Connect</h1>
-                            <h2 className='text-xl text-gray-500'>Utilize our platform to foster community <br /> engagement and collaboration</h2>
+                            <h1 className='font-bold text-4xl'>Community Building</h1>
+                            <h2 className='text-l text-gray-500'>DeliverEase will foster a sense of community and enhance social interaction between day scholars and hostellers. By facilitating interactions and cooperation through the delivery process, the platform is expected to promote a sense of belonging and mutual support within the university community.</h2>
                         </div>
                         <div className='w-full'>
                             <div className='w-full h-full flex justify-center items-center'>
-                                <img src={illustrate} alt="" />
+                                <img src={community} alt="" />
                             </div>
                         </div>
                     </article>
@@ -211,10 +213,10 @@ const Hero = () => {
                                     </div>
                                     <h1 className='
                                     text-[25px] font-bold hover:underline cursor-pointer transition
-                                '>User 1</h1>
+                                '>Gurniaz</h1>
                                 </div>
                                 <div>
-                                    <p class="text-gray-500 leading-7">Lorem ipsum dolor sit amet <br /> consectetur adipisicing elit. Quas, quae</p>
+                                    <p class="text-gray-500 leading-7">"At first, I was a bit hesitant to use DeliverEase. I wasn't sure if it would be reliable or if the delivery would take forever. But I was pleasantly surprised.The entire process was smooth,from placing the order to receiving the item. The delivery was quick, and the dayscholar was very polite. I'm now a regular user and have recommended DeliverEase to all my friends."</p>
                                 </div>
                             </div>
                         </div>
@@ -226,10 +228,10 @@ const Hero = () => {
                                     </div>
                                     <h1 className='
                                     text-[25px] font-bold hover:underline cursor-pointer transition
-                                '>User 2</h1>
+                                '>Sarthak Sharma</h1>
                                 </div>
                                 <div>
-                                    <p class="text-gray-500 leading-7">Lorem ipsum dolor sit amet <br /> consectetur adipisicing elit. Quas, quae.</p>
+                                    <p class="text-gray-500 leading-7">"DeliverEase has been a lifesaver for me.Being able to order items directly from the app has been incredibly convenient. The dayscholars are always friendly and efficient. I'd definitely recommend DeliverEase to any student living in a hostel."</p>
                                 </div>
                             </div>
                         </div>
@@ -241,10 +243,10 @@ const Hero = () => {
                                     </div>
                                     <h1 className='
                                     text-[25px] font-bold hover:underline cursor-pointer transition
-                                '>User 3</h1>
+                                '>Tanya Goyal</h1>
                                 </div>
                                 <div>
-                                    <p class="text-gray-500 leading-7">Lorem ipsum dolor sit amet <br /> consectetur adipisicing elit. Quas, quae.</p>
+                                    <p class="text-gray-500 leading-7">"I love the technology behind DeliverEase. The app is well-designed and user-friendly. The real-time tracking feature is especially helpful. I can see exactly where my order is and when it will arrive. The payment process is secure, and the overall experience is seamless. I'm impressed."</p>
                                 </div>
                             </div>
                         </div>
@@ -256,10 +258,10 @@ const Hero = () => {
                                     </div>
                                     <h1 className='
                                     text-[25px] font-bold hover:underline cursor-pointer transition
-                                '>User 4</h1>
+                                '>Shrishti Mahajan</h1>
                                 </div>
                                 <div>
-                                    <p class="text-gray-500 leading-7">Lorem ipsum dolor sit amet <br /> consectetur adipisicing elit. Quas, quae.</p>
+                                    <p class="text-gray-500 leading-7">"With my hectic schedule, I often don't have time to go shopping for groceries or other essentials. DeliverEase has been a game-changer. I can simply place an order from my phone and have everything delivered to my doorstep. It's so convenient and saves me a lot of time."</p>
                                 </div>
                             </div>
                         </div>
@@ -271,10 +273,10 @@ const Hero = () => {
                                     </div>
                                     <h1 className='
                                     text-[25px] font-bold hover:underline cursor-pointer transition
-                                '>User 5</h1>
+                                '>Harsh Duggal</h1>
                                 </div>
                                 <div>
-                                    <p class="text-gray-500 leading-7">Lorem ipsum dolor sit amet <br /> consectetur adipisicing elit. Quas, quae.</p>
+                                    <p class="text-gray-500 leading-7">"I really appreciate how DeliverEase helps connect hostellers and day scholars. It’s not just about deliveries—it’s also creating a sense of community. I’ve had seamless experiences so far, and the quick responses from day scholars have been impressive!"</p>
                                 </div>
                             </div>
                         </div>
