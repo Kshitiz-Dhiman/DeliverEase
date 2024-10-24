@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
-import { Slide } from 'react-toastify';
 const Navbar = ({ className }) => {
-    const [isloggedin, setIsloggedin] = useState(false);
-    // const notify = () => toast.success("Logged out successfully!", {
-    //     position: "top-right",
+    const [isloggedin, setIsloggedin] = useState(false);    //     position: "top-right",
     //     autoClose: 3000,
     //     hideProgressBar: false,
     //     closeOnClick: true,
