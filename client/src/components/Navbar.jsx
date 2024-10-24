@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import { Slide } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 const Navbar = ({ className }) => {
     const [isloggedin, setIsloggedin] = useState(false);
     // const notify = () => toast.success("Logged out successfully!", {
