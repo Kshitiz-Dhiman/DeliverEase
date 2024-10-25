@@ -2,7 +2,9 @@ import React, { useEffect, useRef } from 'react'
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import image from './images/image.jpeg';
-import sample from './images/sample.png';
+import login from './images/login.jpg';
+import deliver from './images/deliver.jpg';
+import order from './images/order.jpg';
 const Horizontal = () => {
     const sectionRef = useRef(null);
     const triggerRef = useRef(null);
@@ -40,9 +42,11 @@ const Horizontal = () => {
                             '/>
                         </div>
                         <div className='w-full py-36 px-10'>
-                            <p className='text-2xl text-red-400 uppercase'>Location</p>
-                            <p className='text-[50px] font-bold leading-[59px]'>Delivery Zone</p>
-                            <p className='text-[27px] text-gray-500'></p>
+                            <p className='text-2xl text-red-400 uppercase'>About</p>
+                            <p className='text-[50px] font-bold leading-[59px]'>DeliveryEase</p>
+                            <p className='text-[25px] text-gray-500'>
+                                DeliverEase is a community based delivery platform that connects you with local delivery agents who can deliver your orders right to your doorstep. Our platform is designed to provide you with a convenient and hassle-free shopping experience.
+                            </p>
                         </div>
                     </div>
                     <div className="scroll-section flex gap-6 p-44">
@@ -52,7 +56,9 @@ const Horizontal = () => {
                                     <span>1</span>
                                 </div>
                                 <div>
-                                    <img class="object-contain" width="1113" height="1113" src={sample} alt='img'/>
+                                    <img class="object-contain" className='
+                                    w-full h-[300px] object-cover object-center rounded-[20px]
+                                    ' src={login} alt='img' />
                                 </div>
                                 <div>
                                     <p className='text-[20px] text-gray-500'>Create an account on our platform by providing your basic information. It's quick and easy!</p>
@@ -65,7 +71,9 @@ const Horizontal = () => {
                                     <span>2</span>
                                 </div>
                                 <div>
-                                    <img class="object-contain" width="1113" height="1113" src={sample} alt='img'/>
+                                    <img class="object-contain" className='
+                                    w-full h-[300px] object-cover object-center rounded-[20px]
+                                    ' src={order} alt='img' />
                                 </div>
                                 <div>
                                     <p className='text-[20px] text-gray-500'>Browse through our wide range of products and select the items you need. Add them to your cart and proceed to checkout.</p>
@@ -79,10 +87,12 @@ const Horizontal = () => {
                                     <span>3</span>
                                 </div>
                                 <div>
-                                    <img class="object-contain" width="1113" height="1113" src={sample} alt='img'/>
+                                    <img class="object-contain" className='
+                                    w-full h-[300px] object-cover object-center rounded-[20px]
+                                    '  src={deliver} alt='img' />
                                 </div>
                                 <div>
-                                    <p className='text-[20px] text-gray-500'>Sit back and relax while our community-based delivery team brings your order right to your doorstep. Enjoy the convenience of hassle-free delivery!</p>
+                                    <p className='text-[20px] text-gray-500'>Sit back and relax while our community-based delivery team brings your order right to your doorstep.</p>
                                 </div>
                             </div>
                         </div>

@@ -13,6 +13,7 @@ import community from './images/community.png';
 import fastandreliabledelivery from './images/fast and reliable delivery.png';
 import profile from './images/profile.png';
 import sample from './video/sample.mp4';
+
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 const Hero = () => {
@@ -180,7 +181,7 @@ const Hero = () => {
                         </div>
                         <div className='w-full'>
                             <div className='w-full h-full flex justify-center items-center'>
-                                <img src={fastandreliabledelivery} alt=""  />
+                                <img src={fastandreliabledelivery} alt="" />
                             </div>
                         </div>
                     </article>
