@@ -149,7 +149,7 @@ const Dashboard = () => {
         <div className='min-h-screen w-full'>
             <Navbar />
             <div className='min-h-[300px] px-20 pt-16'>
-                <h1 className='text-[30px] md:text-[60px] tracking-tight font-bold mt-10'>Welcome back {userData.name}</h1>
+                <h1 className='text-[30px] md:text-[60px] tracking-tight font-bold mt-10'>Welcome {userData.name}</h1>
                 {userData.type === "dayScholar" ? (
                     <h2 className='text-[20px] md:text-[30px] text-gray-400 font-bold tracking-tight'>Day Scholar</h2>
                 ) : (

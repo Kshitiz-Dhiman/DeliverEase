@@ -48,7 +48,7 @@ const Navbar = ({ className }) => {
             <div className='flex font-bold gap-10 text-[17px] tracking-wider ml-[70px]'>
                 <NavLink to='/dashboard' className='hover-underline-animation center'>Dashboard</NavLink> /
                 <NavLink className='hover-underline-animation center'>About</NavLink> /
-                <NavLink className='hover-underline-animation center'>Pricing</NavLink>
+                <NavLink className='hover-underline-animation center'>Contact</NavLink>
             </div>
             <div className='nav2 flex gap-2'>
                 {isloggedin ? (
