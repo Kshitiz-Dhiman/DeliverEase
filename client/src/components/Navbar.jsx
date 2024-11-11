@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 const Navbar = ({ className }) => {
-    const [isloggedin, setIsloggedin] = useState(false);    //     position: "top-right",
-    //     autoClose: 3000,
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     draggable: true,
-    //     progress: undefined,
-    //     transition: Slide,
-    // });
+    const [isloggedin, setIsloggedin] = useState(false);
     const handleLogout = async () => {
         try {
             const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/logout`, {
@@ -72,7 +64,7 @@ const Navbar = ({ className }) => {
                     </NavLink>
                     <NavLink to="/register">
                         <button
-                            className='bg-black shadow-2xl rounded-[10px] border-black text-white px-7 py-3 font-bold transition ease-in-out delay-150 hover:bg-[#1d3557] focus:outline-none focus:ring-2 focus:ring-[#1d3557]'>
+                            className='bg-black shadow-2xl rounded-[10px] border-black text-white px-7 py-3 font-bold transition ease-in-out delay-150 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-[#1d3557]'>
                             Register
                         </button>
                     </NavLink>
