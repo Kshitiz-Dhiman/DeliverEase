@@ -152,6 +152,7 @@ const Dashboard = () => {
         return <div className=''>
             Login first
         </div>;
+        // window.location.href = "/login";
     }
 
     return (
@@ -182,7 +183,7 @@ const Dashboard = () => {
                                             <p className="mb-3 font-normal text-gray-600 dark:text-gray-400">{request.description}</p>
                                             <h1 className='my-5 font-bold text-xl md:text-2xl'>₹ {request.price} </h1>
                                             <button href="#" className="bg-green-500 rounded-[10px] border-black text-white px-7 py-3 font-bold transition ease-in-out delay-150 shadow-2xl hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
-                                                onClick={() => { orderAccept(request._id); }}>
+                                                onClick={() => { orderAccept(request._id); location.reload(); }}>
                                                 Accept
                                             </button>
                                         </div>

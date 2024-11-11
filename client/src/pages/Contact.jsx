@@ -1,68 +1,130 @@
-import React from 'react'
+import Navbar from "@/components/Navbar"
+import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import { useState } from "react"
 
-const App = () => {
-  return (
-    <div >
-      <div className='text-center'>
-        <p className='text-3xl font-bold mt-8 font-sans'>CONTACT OUR TEAM</p>
-        <div className='w-2/3 mx-auto'>
-          <p>Got any questions about the product or scaling our platform? We're here to help. Chat to our friendly team 24/7 and get onboard in less than 5 minutes.</p>
+export default function Component() {
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        message: '',
+        services: []
+    })
+
+    const services = [
+        "Website design",
+        "UX design",
+        "User research",
+        "Content creation",
+        "Strategy & consulting",
+        "Other"
+    ]
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log('Form submitted:', formData)
+        // Handle form submission
+    }
+
+    return (
+        <div className="w-full">
+            <Navbar />
+
+            <div className="pt-[120px] bg-[#f6f6f6] h-screen">
+                <div className="text-center mb-8 md:mb-12">
+                    <h1 className="text-3xl md:text-4xl font-bold mb-4">Contact our team</h1>
+                    <p className="text-muted-foreground">
+                        Got any questions about the product or scaling on our platform? We&apos;re here to help.
+                        <br />
+                        Chat to our friendly team 24/7 and get onboard in less than 5 minutes.
+                    </p>
+                </div>
+                <div className="max-w-xl mx-auto">
+                    <Card className="p-6">
+                        <form onSubmit={handleSubmit} className="space-y-6">
+                            <div className="grid sm:grid-cols-2 gap-4">
+                                <div className="space-y-2">
+                                    <Label htmlFor="firstName">First name</Label>
+                                    <Input
+                                        id="firstName"
+                                        placeholder="First name"
+                                        value={formData.firstName}
+                                        onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="lastName">Last name</Label>
+                                    <Input
+                                        id="lastName"
+                                        placeholder="Last name"
+                                        value={formData.lastName}
+                                        onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="space-y-2">
+                                <Label htmlFor="email">Email</Label>
+                                <Input
+                                    id="email"
+                                    type="email"
+                                    placeholder="you@company.com"
+                                    value={formData.email}
+                                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                />
+                            </div>
+
+
+
+                            <div className="space-y-2">
+                                <Label htmlFor="message">Message</Label>
+                                <Textarea
+                                    id="message"
+                                    placeholder="Leave us a message..."
+                                    value={formData.message}
+                                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                                    className="min-h-[120px]"
+                                />
+                            </div>
+
+                            <div className="space-y-2">
+                                <Label>Services</Label>
+                                <div className="grid sm:grid-cols-2 gap-2">
+                                    {services.map((service) => (
+                                        <div key={service} className="flex items-center space-x-2">
+                                            <Checkbox
+                                                id={service}
+                                                checked={formData.services.includes(service)}
+                                                onCheckedChange={(checked) => {
+                                                    setFormData({
+                                                        ...formData,
+                                                        services: checked
+                                                            ? [...formData.services, service]
+                                                            : formData.services.filter((s) => s !== service)
+                                                    })
+                                                }}
+                                            />
+                                            <Label htmlFor={service} className="font-normal">
+                                                {service}
+                                            </Label>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <Button type="submit" className="w-full">
+                                <Send className="mr-2 h-4 w-4" />
+                                Send message
+                            </Button>
+                        </form>
+                    </Card>
+                </div>
+            </div>
         </div>
-      </div>
-      <div className='flex justify-center mt-10'>
-        <form action="">
-          <div className='flex'>
-            <div>
-            <label htmlFor='first-name' className='font-semibold text-[0.9rem]'>First name <br /></label>
-            <input type='text' id='first-name' placeholder='Enter your first name ' className='border p-2 rounded-md h-[2rem] text-[0.8rem]'/>
-          </div>
-          <div className='mx-[2rem]'>
-            <label htmlFor='last-name' className='font-semibold text-[0.9rem]'>Last name <br /></label>
-            <input type='text' id='first-name' placeholder='Enter your last name ' className='border p-2 rounded-md h-[2rem] text-[0.8rem]'/>          </div>
-          </div>
-          <br />
-        
-        
-          <div className='mb-4'>
-            <label htmlFor='email' className='text-[0.9rem] font-semibold relative bottom-2'>Email: </label> <br />
-            <input type='text' id='first-name' placeholder='Enter your email ' className='border p-2 rounded-md h-[2rem] text-[0.8rem]'/>
-          </div>
-          <div className='mb-4'>
-            <label htmlFor='phone' className='relative bottom-2 text-[0.9rem] font-semibold' >Phone number</label> <br />
-            <input type='text' id='first-name' placeholder='Enter your phone number   ' className='border p-2 rounded-md h-[2rem] text-[0.8rem]'/>
-          </div>
-          <div>
-            <label htmlFor='message' className='relative  bottom-3 text-[0.9rem] font-semibold'>Message</label> <br />
-            <textarea id='message' placeholder='Enter your message' className='border  w-[15rem] h-[7rem]'></textarea>
-          </div>
-          <button type='submit' className='bg-black text-white text-[0.8rem] px-4 py-1 relative top-4 rounded '>Send Message</button>
-        </form>
-        <div>
-          <h1 className='text-3xl font-bold'>Chat with us</h1>
-          <p className='text-gray-500 text-[0.9rem] my-4'>Speak to our friendly team via live chat</p>
-          <div className='text-[0.8rem] underline cursor-pointer  font-semibold my-[2rem]'>
-          <div>Start a live chat</div>
-          <div>Shoot us an email</div>
-          <div>Message us on X</div>
-          </div>
-          <div className='text-[0.8rem]  cursor-pointer  font-semibold my-[2rem]'>
-          <div className=''>Call Us</div>
-          <div className='text-gray-500'>Call our team</div>
-          <div className='underline'>
-            +90 123 456 789
-          </div>
-          </div>
-          <div className='text-[0.8rem]  cursor-pointer  font-semibold my-[2rem]'>
-          <div className=''>Visit Us</div>
-          <div className='text-gray-500'>Chat to us in persron </div>
-          <div className='underline'>
-            100 Rajpura Punjab near eagle chowk
-          </div>
-          </div>
-        </div>
-        </div>
-      </div>
-  ) 
+    )
 }
-
-export default App

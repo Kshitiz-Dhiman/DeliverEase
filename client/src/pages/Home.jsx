@@ -338,7 +338,7 @@ const Hero = () => {
                         <button className='
                         bg-red-400 text-white font-bold p-4 text-xl rounded-lg mt-5
                         hover:bg-red-400 transition ease-in-out delay-150
-                    '>Contact Us</button>
+                    '><NavLink to="/contact">Contact us</NavLink></button>
                     </div>
                 </footer>
             </main>
