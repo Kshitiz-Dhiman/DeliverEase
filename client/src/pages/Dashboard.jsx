@@ -100,7 +100,15 @@ const Dashboard = () => {
     const [userData, setUserData] = useState(null);
     const [requests, setRequests] = useState([]);
     const [allrequests, setAllRequests] = useState([]);
-
+    const [acceptedBy, setAcceptedBy] = useState("");
+    async function orderAccept(id) {
+        const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/requests/${id}`, {
+            method: 'GET',
+            credentials: 'include'
+        })
+        const data = await response.json();
+        setAcceptedBy(userData.name);
+    }
     useEffect(() => {
         async function fetchUserData() {
             try {
@@ -134,6 +142,7 @@ const Dashboard = () => {
             const data = await response.json();
             setAllRequests(data);
         }
+
         fetchUserData();
         getRequest();
         allRequests();
@@ -141,7 +150,7 @@ const Dashboard = () => {
 
     if (!userData) {
         return <div className=''>
-
+            Login first
         </div>;
     }
 
@@ -164,18 +173,22 @@ const Dashboard = () => {
                     <div className="flex flex-wrap gap-5">
                         {allrequests.slice().reverse().map((request) => {
                             return (
-                                <div key={request._id} className="flex flex-wrap gap-5">
-                                    <div className="min-w-[200px] md:min-w-[300px] min-h-[200px] p-6 bg-[#eceff1] border border-black-100 rounded-xl shadow hover:shadow-2xl transition duration-300 ease-in-out transform  hover:scale-[1.06] hover:bg-white
+                                request.status != "Accepted" && (
+                                    <div key={request._id} className="flex flex-wrap gap-5">
+                                        <div className="min-w-[200px] md:min-w-[300px] min-h-[200px] p-6 bg-[#eceff1] border border-black-100 rounded-xl shadow hover:shadow-2xl transition duration-300 ease-in-out transform  hover:scale-[1.06] hover:bg-white
                                     ">
-                                        <h5 className="mb-2 text-xl md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{request.title}</h5>
-                                        <p className="mb-1 text-sm text-gray-600 dark:text-gray-400">Requested by: {request.user.name}</p>
-                                        <p className="mb-3 font-normal text-gray-600 dark:text-gray-400">{request.description}</p>
-                                        <h1 className='my-5 font-bold text-xl md:text-2xl'>₹ {request.price} </h1>
-                                        <a href="#" className="bg-green-500 rounded-[10px] border-black text-white px-7 py-3 font-bold transition ease-in-out delay-150 shadow-2xl hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500">
-                                            Accept
-                                        </a>
+                                            <h5 className="mb-2 text-xl md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{request.title}</h5>
+                                            <p className="mb-1 text-sm text-gray-600 dark:text-gray-400">Requested by: {request.user.name}</p>
+                                            <p className="mb-3 font-normal text-gray-600 dark:text-gray-400">{request.description}</p>
+                                            <h1 className='my-5 font-bold text-xl md:text-2xl'>₹ {request.price} </h1>
+                                            <button href="#" className="bg-green-500 rounded-[10px] border-black text-white px-7 py-3 font-bold transition ease-in-out delay-150 shadow-2xl hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+                                                onClick={() => { orderAccept(request._id); }}>
+                                                Accept
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
+                                )
+
                             )
                         })}
                     </div>
@@ -189,13 +202,14 @@ const Dashboard = () => {
                                 requests.slice().reverse().map((request) => {
                                     return (
                                         <div key={request._id} className="flex flex-wrap gap-5">
-                                            <div className="min-w-[200px] md:min-w-[300px] min-h-[200px] p-6 bg-white border border-black-100 rounded-xl shadow hover:shadow-2xl transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-1 hover:bg-[#f2faff] hover:border-[#1d3557]">
+                                            <div className="min-w-[200px] md:min-w-[300px] min-h-[200px] p-6 bg-white border border-black-100 rounded-xl shadow hover:shadow-2xl transition duration-300 ease-in-out transform hover:scale-1 hover:bg-[#f2faff] hover:border-[#1d3557]">
                                                 <h5 className="mb-2 text-xl md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{request.title}</h5>
+                                                <p className="mb-1 text-sm text-gray-600 dark:text-gray-400">Accepted by: </p>
                                                 <p className="mb-3 font-normal text-gray-600 dark:text-gray-400">{request.description}</p>
                                                 <h1 className='my-5 font-bold text-xl md:text-2xl'>₹ {request.price} </h1>
-                                                <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-500 rounded-[1] hover:bg-[#304b6a] focus:ring-4 focus:outline-none focus:ring-blue-300">
-                                                    Pending
-                                                </a>
+                                                <button href="#" className={`${request.status === "Accepted" ? "bg-green-600" : "bg-gray-500"} rounded-[10px] border-black text-white px-7 py-3 font-bold transition ease-in-out delay-150 shadow-2xl`}>
+                                                    {request.status}
+                                                </button>
                                             </div>
                                         </div>
                                     )

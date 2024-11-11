@@ -22,7 +22,7 @@ const Horizontal = () => {
                 start: "top top",
                 end: "2000 top",
                 scrub: 0.6,
-                pin: true
+                pin: true,
             }
         })
 
@@ -43,7 +43,7 @@ const Horizontal = () => {
                         </div>
                         <div className='w-full py-36 px-10'>
                             <p className='text-2xl text-red-400 uppercase'>About</p>
-                            <p className='text-[50px] font-bold leading-[59px]'>DeliveryEase</p>
+                            <p className='text-[50px] font-bold leading-[59px]'>DeliverEase</p>
                             <p className='text-[25px] text-gray-500'>
                                 DeliverEase is a community based delivery platform that connects you with local delivery agents who can deliver your orders right to your doorstep. Our platform is designed to provide you with a convenient and hassle-free shopping experience.
                             </p>

@@ -108,7 +108,7 @@ const Hero = () => {
                             </NavLink>
                         </div>
                     </div>
-                    <div className='absolute h-[60vh] w-[70vw] z-[7] top-[0px] left-[150px] m-32'>
+                    <div className='absolute h-[60vh] w-[70vw] z-[3] top-[0px] left-[150px] m-32'>
                         <div className=' particle
                             bg-black opacity-[0.3] absolute w-[30px] h-[30px] rounded-[10px]
                             transform right-[232px] rotate-45 top-[10px]

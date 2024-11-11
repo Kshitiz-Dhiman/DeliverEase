@@ -27,6 +27,7 @@ export default function Component() {
                 credentials: "include",
             });
             if (!response.ok) {
+                alert("Login failed!");
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();

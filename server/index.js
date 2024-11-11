@@ -136,6 +136,15 @@ app.get("/api/allrequests", isloggedin, async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+app.get("/api/requests/:id", isloggedin, async (req, res) => {
+    let request = await requestModel.findById(req.params.id).populate('user');
+    if (!request) {
+        return res.status(404).send("Request not found");
+    }
+    request.status = "Accepted";
+    await request.save();
+    res.json(request);
+});
 function isloggedin(req, res, next) {
     const token = req.cookies.token;
     if (!token) {
