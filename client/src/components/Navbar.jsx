@@ -39,7 +39,7 @@ const Navbar = ({ className }) => {
             <NavLink to='/'><div className='overflow-hidden'><h1 className='nav1 text-3xl font-bold leading-7 tracking-tighter shadow-2xl'>Deliver <br /> Ease</h1></div></NavLink>
             <div className='flex font-bold gap-10 text-[17px] tracking-wider ml-[70px]'>
                 <NavLink to='/dashboard' className='hover-underline-animation center'>Dashboard</NavLink> /
-                <NavLink className='hover-underline-animation center'>About</NavLink> /
+                <NavLink to='/About'className='hover-underline-animation center'>About</NavLink> /
                 <NavLink to="/contact" className='hover-underline-animation center'>Contact</NavLink>
             </div>
             <div className='nav2 flex gap-2'>
