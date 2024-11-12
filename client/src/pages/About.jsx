@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from "@/components/Navbar"
+import top2 from './images/about us page.png';
+// import top from './images/aboutustop.jpg';
+import Kshitiz from './images/kshitiz.jpg';
+import Lakshay from './images/lakshay.jpg';
+import Moksh from './images/Moksh.png';
+import Nimish from './images/Nimish.jpg';
 
 const AboutUs = () => {
  
@@ -29,9 +35,9 @@ const AboutUs = () => {
         </div>
       <div className='w-2/5'>
       <img
-          src="https://cdn-icons-png.flaticon.com/512/8893/8893666.png"
+          src={top2}
           alt=""
-          className="w-56 h-56 rounded-full mx-auto mb-6 mt-10 flex"
+          className="w-2/3 h-96 rounded-full mx-auto mb-9 mt-15 flex mr-5"
         />
       </div>
       </div>
@@ -46,7 +52,7 @@ const AboutUs = () => {
             {/* Kshitiz */}
             <div className="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transform transition-all duration-300 hover:rotate-2 h-96" >
               <img
-                src="https://cdn-icons-png.flaticon.com/512/8893/8893666.png"
+                src={Kshitiz}
                 alt="Kshitiz"
                 className="w-56 h-56 rounded-full mx-auto mb-6"
               />
@@ -57,7 +63,7 @@ const AboutUs = () => {
             {/* Lakshay */}
             <div className="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transform transition-all duration-300 hover:rotate-2 h-96">
               <img
-                src="https://cdn-icons-png.flaticon.com/512/8893/8893666.png"
+                src={Lakshay}
                 alt="Lakshay Aggarwal "
                 className="w-56 h-56 rounded-full mx-auto mb-6"
               />
@@ -68,7 +74,7 @@ const AboutUs = () => {
             {/* Nimish */}
             <div className="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transform transition-all duration-300 hover:rotate-2 h-96">
               <img
-                src="https://cdn-icons-png.flaticon.com/512/8893/8893666.png"
+                src={Nimish}
                 alt="Nimish Kochher"
                 className="w-56 h-56 rounded-full mx-auto mb-6"
               />
@@ -79,7 +85,7 @@ const AboutUs = () => {
             {/* Moksh */}
             <div className="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transform transition-all duration-300 hover:rotate-2 h-96">
               <img
-                src="https://cdn-icons-png.flaticon.com/512/8893/8893666.png"
+                src={Moksh}
                 alt="Moksh Thukral"
                 className="w-56 h-56 rounded-full mx-auto mb-6"
               />
