@@ -158,7 +158,7 @@ const Dashboard = () => {
     return (
         <div className='min-h-screen w-full'>
             <Navbar />
-            <div className='min-h-[300px] px-20 pt-16'>
+            <div className='min-h-[300px] p-[100px]  bg-[#f6f6f6] border shadow'>
                 <h1 className='text-[30px] md:text-[60px] tracking-tight font-bold mt-10'>Welcome {userData.name}</h1>
                 {userData.type === "dayScholar" ? (
                     <h2 className='text-[20px] md:text-[30px] text-gray-400 font-bold tracking-tight'>Day Scholar</h2>
@@ -167,8 +167,8 @@ const Dashboard = () => {
                 )}
                 <button className='bg-black my-5 shadow-2xl rounded-[10px] border-black text-white px-7 py-3 font-bold transition ease-in-out delay-150 hover:bg-[#1d3557] focus:outline-none focus:ring-2 focus:ring-[#1d3557]'>See Profile</button>
             </div>
-            <hr class="my-12 w-3/4 m-auto h-0.5 border-t-0 bg-neutral-200 dark:bg-white/10" />
-            <div className='min-h-full m-5 md:m-20'>
+            {/* <hr class="my-12 w-3/4 m-auto h-0.5 border-t-0 bg-neutral-200 dark:bg-white/10" /> */}
+            <div className='min-h-full m-5 md:m-20 p-6'>
                 <h1 className='font-bold text-3xl md:text-5xl my-5'>{userData.type === "dayScholar" ? "Active" : "Your"} Orders</h1>
                 {userData.type === "dayScholar" ? (
                     <div className="flex flex-wrap gap-5">

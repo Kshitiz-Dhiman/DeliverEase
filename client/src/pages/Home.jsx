@@ -200,6 +200,8 @@ const Hero = () => {
                         </div>
                     </article>
                 </section>
+
+
                 <section className='w-full min-h-screen p-20 flex flex-col gap-7'>
                     <div className='text-center'>
                         <h1 className='text-orange-500 uppercase text-xl'>Feedbacks</h1>
