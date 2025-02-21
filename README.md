@@ -1,36 +1,29 @@
 
-# DeliverEase
+# Express.js Authentication System
+This is a simple user authentication system built with Node.js, Express.js, MongoDB, and JWT for token-based authentication. It includes features for user registration, login, logout, and password encryption using bcrypt.
 
-Deliverease is a community based delivery service that connects you with day scholars of your university to deliver your items to your doorstep. We are a team of students who are passionate about making the lives of students easier. We are looking to expand to other universities in the near future. We are committed to providing you with the best delivery service possible. We are always looking for ways to improve our service and we welcome any feedback you may have. If you have any questions or concerns, please do not hesitate to contact us. We are here to help you. Thank you for choosing deliverease. We look forward to serving you.
+# Feauters
+
+<li>User registration with hashed passwords</li>
+<li>User login with JWT-based authentication</li>
+<li>Secure cookies for session management</li>
+<li>Input validation using express-validator</li>
+<li>Password encryption with bcrypt</li>
 
 
 ## Installation
 
-Install deliverEase with npm
-
-To run the frontend code : 
+Clone the repository: 
 ```bash
-  cd client
-  npm install 
-  npm run dev
+git clone https://github.com/lakshay-1809/JWT_Authentication-.git
 ```
-To run the backend code : 
+Install dependencies:
 ```bash
-  cd server
   npm install 
-  npx nodemon index.js
+```
+Start the server:
+```bash
+  npx nodemon app.js
 ```
  
-## Tech Stack
-
-**Client:** React, TailwindCSS
-
-**Server:** Node, Express
-
-**Database"** MongoDB
-
-
-## Feedback
-
-If you have any feedback, please reach out to us at deliverease@gmail.com
 
